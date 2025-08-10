@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { createContext, useEffect, useState } from "react";
+import AppNavs from "./components/AppNavs";
+import {ToastContainer} from 'react-toastify';
 
-function App() {
+const UserContext = createContext();
+
+
+export default function App() {
+  const [userdata,setuserdata] = useState(null);
+  const [trigger,settrigger] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <UserContext.Provider value={{userdata,setuserdata,trigger,settrigger}}>
+      <AppNavs/>
+      <ToastContainer/>
+    </UserContext.Provider>
+    </>
   );
 }
 
-export default App;
+export {UserContext}
