@@ -18,8 +18,8 @@ export default function RouteProtection({Component})
     }
     catch(e)
     {
-        console.log("Cookie Login failed")
-        nav("/login");
+      console.log("Cookie Login failed")
+      nav("/login");
     }
   }
 

@@ -61,7 +61,7 @@ export default function Home()
         }
         else
         {
-          toast.info("Couldnt Get Messages")
+          setmessages([]);
         }
       } 
       catch (e) {
