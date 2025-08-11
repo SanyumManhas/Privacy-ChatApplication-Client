@@ -94,7 +94,7 @@ export default function Home()
      useEffect(()=>{
         if(userdata)
         {
-          setSocket(io("http://localhost:8080"))
+          setSocket(io("https://privacy-chatapplication-server.onrender.com"))
         }
       },[userdata])
     
