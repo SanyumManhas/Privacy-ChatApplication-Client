@@ -12,6 +12,7 @@ export default function RouteProtection({Component})
     
     const GetUserDetails = async()=>{
     try{
+        console.log("header->", headers);
       const result = await axios.get(`${process.env.REACT_APP_API_URL}/getUser`,{withCredentials: !isIOS,
         headers});
       if(result.status === 200)
