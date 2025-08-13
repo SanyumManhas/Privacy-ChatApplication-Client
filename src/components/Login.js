@@ -26,6 +26,7 @@ export default function Login()
       if(result.data.success)
       {
         setuserdata(result.data.userdetails);
+        console.log(result.data.token);
         localStorage.setItem("token", result.data.token);
         nav("/home");
       }
