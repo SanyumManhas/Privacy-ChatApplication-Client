@@ -15,10 +15,13 @@ const NavBar = (props) => {
   
   const [modalShow, setModalShow] = useState(false);
   const [loading,setloading] = useState(false);
-
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  const headers = isIOS?{Authorization: `Bearer ${localStorage.getItem("token")}`}:{};
+  
   const handlelogout = async()=>{
     try{
-      const result = await axios.post(`${process.env.REACT_APP_API_URL}/logout`,{},{withCredentials: true});
+      const result = await axios.post(`${process.env.REACT_APP_API_URL}/logout`,{},{withCredentials: !isIOS,
+        headers});
           if(result.data.success)
           {
             setuserdata(null);
@@ -40,7 +43,8 @@ const NavBar = (props) => {
   const getContacts = async()=>{
     try{
       setloading(true);
-      const result = await axios.get(`${process.env.REACT_APP_API_URL}/getConnections`, {withCredentials: true});
+      const result = await axios.get(`${process.env.REACT_APP_API_URL}/getConnections`, {withCredentials: !isIOS,
+        headers});
       if(result.data.success)
       {
         setcontacts(result.data.connections);
