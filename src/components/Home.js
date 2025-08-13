@@ -17,8 +17,11 @@ export default function Home()
     const [loading,setloading] = useState(false);
 
     const lastMsgRef = useRef(null);
-
+    
     const [msg,setmsg] = useState("");
+    
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    const headers = isIOS?{Authorization: `Bearer ${localStorage.getItem("token")}`}:{}
 
     const handleMsg = async(e)=>{
       try {
@@ -32,7 +35,7 @@ export default function Home()
           msg: msg,
         }
         
-        const result = await axios.post(`${process.env.REACT_APP_API_URL}/sendMsg`, message,{withCredentials: true});
+        const result = await axios.post(`${process.env.REACT_APP_API_URL}/sendMsg`, message,{withCredentials: !isIOS,headers});
         if(result.data.success)
         {
           console.log("Msg stored in db")
