@@ -232,12 +232,12 @@ export default function Home()
                   ></path>
                 </svg>
                 </button>
-                <div className="w-100 bg-transparent flex justify-center rounded-xl">
+                <div className="w-100 bg-white flex justify-center rounded-xl">
                 <input
                   type="text"
                   value={msg}
                   onChange={(e)=>setmsg(e.target.value)}
-                  className="flex w-100 ml-[64px] mr-[145px] border border-black rounded-xl focus:border-indigo-300 pl-4 h-10"
+                  className="flex w-100 border border-black rounded-xl focus:border-indigo-300 pl-4 h-10"
                 />
                 </div>
                 {/* <button
