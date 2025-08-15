@@ -15,13 +15,16 @@ export default function Home()
     const [messages,setmessages] = useState([]);
     const [activeUsers, setactiveUsers]= useState([]);
     const [loading,setloading] = useState(false);
+    
 
     const lastMsgRef = useRef(null);
-    
+
     const [msg,setmsg] = useState("");
-    
+
+
     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
     const headers = isIOS?{Authorization: `Bearer ${localStorage.getItem("token")}`}:{}
+
 
     const handleMsg = async(e)=>{
       try {
@@ -97,7 +100,7 @@ export default function Home()
      useEffect(()=>{
         if(userdata)
         {
-          setSocket(io("https://privacy-chatapplication-server.onrender.com"))
+          setSocket(io("http://localhost:9000"))
         }
       },[userdata])
     
@@ -216,7 +219,7 @@ export default function Home()
               <div className="relative">
                 <button
                 className="absolute flex items-center justify-center h-full w-12 left-1 top-0 text-gray-400 hover:text-gray-600"
-                >
+              >
                 <svg
                   className="w-5 h-5"
                   fill="none"
@@ -231,13 +234,13 @@ export default function Home()
                     d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"
                   ></path>
                 </svg>
-                </button>
+              </button>
                 <div className="w-100 bg-white flex justify-center rounded-xl">
                 <input
                   type="text"
                   value={msg}
                   onChange={(e)=>setmsg(e.target.value)}
-                  className="flex w-100 ml-[20px] mr-[20px] border border-black rounded-xl focus:border-indigo-300 pl-4 h-10"
+                  className="flex w-100 ml-[50px] mr-[78px] border border-black focus:border-indigo-300 pl-4 h-10"
                 />
                 </div>
                 {/* <button
@@ -261,7 +264,7 @@ export default function Home()
                 <button
                   onClick={handleMsg}
                   disabled={msg.trim().length > 0? false: true}
-                  className="absolute flex items-center p-2 justify-center bg-indigo-500 hover:bg-indigo-600 rounded-xl text-white h-90 w-fit flex-shrink-0 top-0 right-0 m-0 "
+                  className="absolute flex items-center p-2 justify-center bg-indigo-500 hover:bg-indigo-600 rounded-r-xl text-white h-100 w-fit flex-shrink-0 top-0 right-0 m-0 "
                 >
                   Send
                 <span className="ml-2">
