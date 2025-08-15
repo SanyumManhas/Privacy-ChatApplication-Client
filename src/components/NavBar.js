@@ -15,11 +15,13 @@ const NavBar = (props) => {
   
   const [modalShow, setModalShow] = useState(false);
   const [loading,setloading] = useState(false);
+  const [loading2,setloading2] = useState(false);
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
   const headers = isIOS?{Authorization: `Bearer ${localStorage.getItem("token")}`}:{};
   
   const handlelogout = async()=>{
     try{
+      setloading2(true);
       const result = await axios.post(`${process.env.REACT_APP_API_URL}/logout`,{},{withCredentials: !isIOS,
         headers});
           if(result.data.success)
@@ -36,6 +38,9 @@ const NavBar = (props) => {
     catch(e)
     {
       console.log('error while logout', e.message)
+    }
+    finally{
+      setloading2(false);
     }
         
   }
@@ -138,7 +143,7 @@ const NavBar = (props) => {
         </div>
 
         <div className="flex flex-col py-8 pl-2 pr-2 w-64 bg-gray-800 flex-shrink-0">
-          <button onClick={handlelogout}
+          {!loading2? <button onClick={handlelogout}
             className="flex flex-row flex-wrap justify-between items-center bg-indigo-400 border border-gray-900 w-100 py-1.5 px-2 rounded-lg hover:bg-indigo-500"
           >
           <div className='flex flex-row items-center'>
@@ -156,7 +161,10 @@ const NavBar = (props) => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h6a2 2 0 012 2v1" />
             </svg>
           </div>
-        </button>
+        </button>: <div className="flex flex-row flex-wrap justify-between items-center bg-indigo-400 border border-gray-900 w-100 py-1.5 px-2 rounded-lg hover:bg-indigo-500">
+          <TailSpin fill="blue"/>
+          </div>
+          }
         <div className="flex flex-col mt-8">
           <div className="flex flex-row items-center justify-between text-xs">
             <span className="font-bold text-white">Contacts</span>
