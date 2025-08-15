@@ -237,7 +237,7 @@ export default function Home()
                   type="text"
                   value={msg}
                   onChange={(e)=>setmsg(e.target.value)}
-                  className="flex w-100 border border-black rounded-xl focus:border-indigo-300 pl-4 h-10"
+                  className="flex w-100 ml-[20px] mr-[20px] border border-black rounded-xl focus:border-indigo-300 pl-4 h-10"
                 />
                 </div>
                 {/* <button
@@ -261,7 +261,7 @@ export default function Home()
                 <button
                   onClick={handleMsg}
                   disabled={msg.trim().length > 0? false: true}
-                  className="absolute flex items-center p-2 justify-center bg-indigo-500 hover:bg-indigo-600 rounded-xl text-white h-100 w-fit flex-shrink-0 top-0 right-0 m-0 "
+                  className="absolute flex items-center p-2 justify-center bg-indigo-500 hover:bg-indigo-600 rounded-xl text-white h-90 w-fit flex-shrink-0 top-0 right-0 m-0 "
                 >
                   Send
                 <span className="ml-2">
