@@ -216,7 +216,7 @@ export default function Home()
               <div className="relative">
                 <button
                 className="absolute flex items-center justify-center h-full w-12 left-1 top-0 text-gray-400 hover:text-gray-600"
-              >
+                >
                 <svg
                   className="w-5 h-5"
                   fill="none"
@@ -231,7 +231,7 @@ export default function Home()
                     d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"
                   ></path>
                 </svg>
-              </button>
+                </button>
                 <div className="w-100 bg-transparent flex justify-center rounded-xl">
                 <input
                   type="text"
@@ -240,7 +240,7 @@ export default function Home()
                   className="flex w-50 ml-[64px] mr-[145px] border border-black rounded-xl focus:border-indigo-300 pl-4 h-10"
                 />
                 </div>
-                <button
+                {/* <button
                   className="absolute flex items-center justify-center h-full w-9 right-20 top-0 text-gray-400 hover:text-gray-600"
                 >
                   <svg
@@ -257,7 +257,7 @@ export default function Home()
                       d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                     ></path>
                   </svg>
-                </button>
+                </button> */}
                 <button
                   onClick={handleMsg}
                   disabled={msg.trim().length > 0? false: true}
