@@ -240,7 +240,7 @@ export default function Home()
                   type="text"
                   value={msg}
                   onChange={(e)=>setmsg(e.target.value)}
-                  className="flex w-100 ml-[50px] mr-[78px] border border-black focus:border-indigo-300 pl-4 h-10"
+                  className="flex w-100 ml-[50px] mr-[78px] border border-black focus:border-indigo-300 pl-1 h-10"
                 />
                 </div>
                 {/* <button
